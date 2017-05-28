@@ -1,0 +1,20 @@
+Instructions for running these exercises.
+
+Code commands are given in backticks. Run the commands without the backtick characters.
+
+1. Open the project folder in terminal and execute `npm i`
+
+2. Create a new folder inside the project folder called `data`
+
+3. Run `mongod --dbpath ./data`
+	(You might want to run this in a new terminal - just make sure you're inside the project folder.)
+
+4. Run (only once!) `node import.js`
+	(If you run this more than once, kill mongo, run `rm -rf ./data` and go back to #2.)
+
+5. Run the server by executing `node exercises.js`.
+	(The output for these problems will log to the terminal - there's no webserver here.)
+
+6. Solve the problems in exercises.js - you'll have to edit the imported files.
+
+7. Turn this all in via github!
