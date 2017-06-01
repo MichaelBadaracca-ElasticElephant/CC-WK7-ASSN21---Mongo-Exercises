@@ -1,12 +1,10 @@
 module.exports = function (db) {
-    console.log("EXERCISE 2")
+
     // Which users checked out any of the Lord of the Rings trilogy?
 
     //Used this site as a reference: https://www.sitepoint.com/using-joins-in-mongodb-nosql-databases/
 
-    //get lord of the rings ids then use them to look up users
-
-
+    //Gets movies with a title like "Lord of the Rings"
     var getMoviesPromise = new Promise(function (resolve, reject) {
         db.collection("movies").find(
             {
@@ -19,16 +17,18 @@ module.exports = function (db) {
         })
     });
 
+    //Once the movies are found, checkouts with those movies can be evaluated
     var nextPromise = getMoviesPromise.then(function (movies) {
         getCheckoutsFromMovies(movies);
     })
 
+    //Gets the checkouts corresponding to the movie ids passed in
     function getCheckoutsFromMovies(movies) {
         var movieIds = getMovieIdsAndConvertToString(movies);
         db.collection("checkouts").find(
             {movieId: { $in: movieIds }}
         ).toArray(function (err, checkouts) {
-
+            //Extracts and orders unique users from checkouts
             var users = getDistinctUsersFromCheckouts(checkouts);
             console.log("Exercise 2:\n\tThe LOTR movies were checked out by users " + users);
         });
@@ -50,6 +50,7 @@ module.exports = function (db) {
         return Object.keys(unique);
     }
 
+    //Extracs the movie Id from a movie and converts it to a string so it can be looked up in the checkouts collection
     function getMovieIdsAndConvertToString(movies) {
         var movieIds = [];
         for (movie of movies) {
