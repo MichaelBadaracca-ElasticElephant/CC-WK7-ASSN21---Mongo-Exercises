@@ -1,21 +1,6 @@
 module.exports = function (db) {
     //What is the title of the movie(s) that was the most checked out?
 
-    //find unique movie Ids
-    //do a query for each movie Id
-
-
-
-    //count up the number of checkouts with the same movieId
-    //find 
-
-
-
-    //db.collection("checkouts").distinct("movieId", function (err, movieIds) {
-    //    console.log(movieIds);
-
-    //})
-
 
     //Used the follwing resource: https://stackoverflow.com/questions/9491920/find-all-duplicate-documents-in-a-mongodb-collection-by-a-key-field
     //Modified the answer from the user "expert"

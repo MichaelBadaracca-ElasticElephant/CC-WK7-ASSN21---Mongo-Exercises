@@ -25,9 +25,11 @@ module.exports = function (db) {
     //Gets the checkouts corresponding to the movie ids passed in
     function getCheckoutsFromMovies(movies) {
         var movieIds = getMovieIdsAndConvertToString(movies);
+        //console.log("MOVIEIDS", movieIds)
         db.collection("checkouts").find(
             {movieId: { $in: movieIds }}
         ).toArray(function (err, checkouts) {
+            //console.log(checkouts);
             //Extracts and orders unique users from checkouts
             var users = getDistinctUsersFromCheckouts(checkouts);
             console.log("Exercise 2:\n\tThe LOTR movies were checked out by users " + users);
